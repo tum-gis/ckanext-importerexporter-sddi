@@ -1,0 +1,24 @@
+{% ckan_extends %}
+
+{% set pkg = c.pkg_dict %}
+
+{% block primary_content_inner %}
+{{ super() }}
+
+<a href="{% url_for 'export_dataset', package_id=pkg.name %}" class="btn btn-primary" id="export_dataset_button" style="float:right">
+Datensatz exportieren
+</a>
+
+<br>
+<br>
+
+<script>
+
+function btn_click(){
+alert("Der Export von Datensätzen ist aktuell noch nicht möglich.")
+
+
+}
+</script>
+
+{% endblock %}
