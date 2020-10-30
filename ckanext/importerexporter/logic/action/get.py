@@ -18,6 +18,7 @@ def zip_dataset(dataset_dict):
                     zf.writestr("CKAN_DATASET_" + dataset_dict["name"] + "/" + r_path_zip, r_file.read())
                     r_file.close()
                 except Exception as e:
+                    pass
         zf.writestr("CKAN_DATASET_" + dataset_dict["name"] + "/dataset.json", json.dumps(dataset_dict, indent=2))
     return zip_buffer
 
