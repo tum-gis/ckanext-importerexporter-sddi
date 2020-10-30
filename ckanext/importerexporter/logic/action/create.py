@@ -1,7 +1,6 @@
 import random
 import cgi
 import json
-import tempfile
 import zipfile
 from StringIO import StringIO
 from io import BytesIO
@@ -9,14 +8,10 @@ import os
 import os.path
 from os import path
 from ckan.common import config
-import shutil
 import ckan.model as model
 
 import ckan.plugins.toolkit as toolkit
-from ckan_datapackage_tools import converter
 import requests
-
-import datapackage
 
 def create_package(context, dataset, dataset_name):
     #try:

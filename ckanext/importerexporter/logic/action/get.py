@@ -1,5 +1,4 @@
 import ckan.plugins.toolkit as toolkit
-from ckan_datapackage_tools import converter
 import json
 import zipfile
 import StringIO
