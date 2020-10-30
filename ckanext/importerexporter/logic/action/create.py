@@ -18,14 +18,17 @@ import requests
 
 import datapackage
 
+import logging
+log = logging.getLogger(__name__)
+
 
 def create_package(context, dataset, dataset_name):
-    try:
+    #try:
+    if True:
         zf = None
         zf = dataset
         json_dataset = json.loads(zf.open(dataset_name + "/dataset.json").read())
         json_dataset["licence_agreement"] = ["licence_agreement_check"]
-
         context = {
             'model': model,
             'session': model.Session,
@@ -42,10 +45,14 @@ def create_package(context, dataset, dataset_name):
         json_dataset["resources"] = []
         json_dataset.pop("id", None)
         package_id = "1234"
-        package_id = toolkit.get_action("package_create")(context, json_dataset)
-        package_id = package_id["id"]
+        package_id2 = toolkit.get_action("package_create")(context, json_dataset)
+        package_id = package_id2["id"]
+        resource_replacer = []
         for resource in resources:
             resource["package_id"] = package_id
+            resource_url = resource["url"]
+            resource_id2 = resource["id"]
+            resource_p_id = resource["package_id"]
             if resource["mimetype"] is not None:
                 r_url = resource["url"]
                 r_id = resource["id"]
@@ -56,14 +63,30 @@ def create_package(context, dataset, dataset_name):
                 content = zf.open(dataset_name + "/" + r_path).read()
                 fp = BytesIO(content)
                 resource["upload"] = cgi.FieldStorage(fp=fp, headers=headers, environ=environ)
-            resource.pop("id", None)
+            #resource.pop("id", None)
             resource_id = toolkit.get_action("resource_create")(context, resource)
+            resource_replacer.append([resource_url, resource_id["url"], resource_p_id, resource_id2, resource_id["package_id"], resource_id["id"]])
+            log.error("# rid_before # : " + str(resource_replacer))
+
+
+        dataset_new = toolkit.get_action("package_show")(context, {"id":json_dataset["name"]})
+        description = dataset_new["notes"]
+        log.error("# description : " + str(description))
+        for rr in resource_replacer:
+            log.error("# rid # : " + str(rr))
+            description = description.replace(rr[0], rr[1])
+            description = description.replace(rr[2] + "/resource/" + rr[3], rr[4] + "/resource/" + rr[5])
+        dataset_new["notes"] = description
+        toolkit.get_action("package_update")(context, dataset_new)
+
+
+
         if package_id == "1234":
             return [2, "Fehler beim erstellen des Datensatzes: " + json_dataset["title"]]
         else:
             return [0]
-    except Exception as e:
-        return [2, e]
+    #except Exception as e:
+    #    return [2, e]
     return [0]
 
 
