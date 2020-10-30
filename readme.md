@@ -60,6 +60,11 @@ Content Packages müssen in der Form `CKAN_CONTENTPACKAGE_[Name].zip` gespeicher
 Datensätze innerhalb eines Content-Packages müssen in der Form `CKAN_DATASET_[Name].zip` gespeichert sein.
 Folgende Grafik zeigt Beispielhaft den Aufbau eines Content-Packages:
 
+├───FooScripts
+├───barconfig
+├───Baz
+│   ├───BadBaz
+│   └───Drop
 
 
 ## Export von Content-Packages
