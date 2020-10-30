@@ -59,7 +59,7 @@ Um das Plugin zu aktivieren muss in der Datei `/etc/ckan/default/production.ini`
 Ein Content-Package ist eine Sammlung von einzelnen Datensätzen im ZIP-Format. Jeder Datensatz ist wiederum eine eigene ZIP-Datei, die jeweils den Datensatz im JSON-Format sowie zusätzliche Ressourcen wie Bilder enthält.  
 Content Packages müssen in der Form `CKAN_CONTENTPACKAGE_[Name].zip` gespeichert sein.  
 Datensätze innerhalb eines Content-Packages müssen in der Form `CKAN_DATASET_[Name].zip` gespeichert sein.
-Folgende Grafik zeigt Beispielhaft den Aufbau eines Content-Packages:
+Beispielhafter Aufbau eines Content-Packages:
 
 ```
 CKAN_CONTENTPACKAGE_Basispaket.zip  
@@ -72,7 +72,7 @@ CKAN_CONTENTPACKAGE_Basispaket.zip
     └───CKAN_DATASET_Datensatz-2  
         ├───dataset.json
         ├───grafik-1.jpg
-		├───grafik-2.gif
+        ├───grafik-2.gif
         └───tabelle.svc 
 ```
 
