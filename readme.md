@@ -64,12 +64,12 @@ Folgende Grafik zeigt Beispielhaft den Aufbau eines Content-Packages:
 
 ## Export von Content-Packages
 Content-packages können direkt im CKAN-Katalog erzeugt werden. Der Export setzt vorraus dass Sie als Administrator im CKAN-Katalog eingeloggt sind. Navigieren Sie hierfür zum Datensatz-Tab und führen Sie eine beliebige Suche durch. Sie können auch eigene Such-Erweiterungen wie eine Räumliche Suche verwenden. Oben rechts taucht nun ein Button `Content-Package exportieren auf`
-![Export](images/exp_cont.png?raw=true "Export")
+![Export](images/exp_cont.PNG?raw=true "Export")
 
 
 ## Export eines einzelnen Datensatzes
 Diese CKAN-Erweiterung ermöglicht auch den Export eines einzelnen Datensatzes. Loggen Sie sich hierfür als Administrator im Katalog ein Öffnen Sie einen Datensatz. Unten rechts erscheint nun ein Button `Datensatz exportieren`.
-![Export](images/exp_data.png?raw=true "Export")
+![Export](images/exp_data.PNG?raw=true "Export")
 
 
 ## Import eines Content-packages
