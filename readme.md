@@ -116,6 +116,8 @@ Ist ein Datensatz bereits registriert wird er übersprungen und eine Warnung mit
 Ja, Sämtliche Ressourcen werden exportiert und auch wieder importiert.
 * Gehen beim Export und Import Daten verloren?  
 Beim Export werden alle Meta-Daten eines Datensatzes exportiert. Beim Import gehen lediglich Informationen verloren, die sich auf den ursprünglichen Datensatz beziehen, also z.B. das Erstellungs-Datum oder der urpsrüngliche Autor
+* Wenn in der Beschreibung eines Datensatzes eine Ressource verlinkt ist, funktioniert der Link anschließend noch?
+Es wird generell empfohlen relative Links zu verwenden, sodass der Link unabhängig von der URL des Katalogs ist. Ressourcen selbst erhalten beim Import eine neue URL. Die Erweiterung sucht in der Beschreibung des jeweiligen Datensatzes nach dieser URL und versucht sie durch die neue URL zu ersetzen. Dadurch sollten interne Links auf Ressourcen erhalten bleiben.
 
 ## CKAN Dokumentation und Hilfe
 

@@ -98,4 +98,4 @@ class ContentPackageController(toolkit.BaseController):
             if severity == 2:
                 return toolkit.render('admin/contentpackages.html', extra_vars={"data":params, "success": 2, "results":upload_result})
         except toolkit.ValidationError as e:
-                return toolkit.render('admin/contentpackages.html', extra_vars={"data":params, "success": 2, "results":["Das Content-Package konnte nicht gelesen werden: " + e]})
+            return toolkit.render('admin/contentpackages.html', extra_vars={"data":params, "success": 2, "results":["Das Content-Package konnte nicht gelesen werden: " + e]})
