@@ -23,6 +23,7 @@ Dieses Repository enthält ein Plugin um eine neue Instanz einer [CKAN-Katalogpl
 * [Export eines einzelnen Datensatzes](#export-eines-einzelnen-Datensatzes)
 * [Import von Content-Packages](#import-von-content-packages)
 * [Import eines einzelnen Datensatzes](#import-eines-einzelnen-Datensatzes)
+* [FAQ](#FAQ)
 * [CKAN Dokumentation und Hilfe](#ckan-dokumentation-und-hilfe)
 * [Lizenz](#lizenz)
 
@@ -60,7 +61,11 @@ Content Packages müssen in der Form `CKAN_CONTENTPACKAGE_[Name].zip` gespeicher
 Datensätze innerhalb eines Content-Packages müssen in der Form `CKAN_DATASET_[Name].zip` gespeichert sein.
 Folgende Grafik zeigt Beispielhaft den Aufbau eines Content-Packages:
 
-├───FooScripts  
+CKAN_CONTENTPACKAGE_Basispaket.zip  
+├───CKAN_DATASET_Datensatz-1.zip  
+│   ├───CKAN_DATASET_Datensatz-1  
+│       ├───dataset.json
+│       ├───
 ├───barconfig  
 ├───Baz  
 │   ├───BadBaz  
@@ -98,6 +103,10 @@ Wenn während dem Import ein Fehler auftritt, wird der Fehlercode in rot ausgege
 Analog zum Export kann auch der Import mit einem Einzelnen Datensatz erfolgen. Hierfür können Sie direkt eine Datei im Format `CKAN_DATASET_[Name].zip` importieren.
 
 
+## FAQ
+
+* Was passiert wenn ein Datensatz importiert wird, der bereits im Katalog vorhanden ist?  
+Ist ein Datensatz bereits registriert wird er übersprungen und eine Warnung mit einem Link zum Datensatz ausgegeben.
 
 ## CKAN Dokumentation und Hilfe
 
