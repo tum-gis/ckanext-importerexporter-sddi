@@ -3,6 +3,10 @@
 
 {% block primary_content_inner %}
 
+{% if not c.userobj.sysadmin %}
+{% snippet 'not_found.html' %}
+{% endif %}
+
 {% block form %}
   {% snippet 'admin/snippets/import_datapackage_form.html', data=data, success=success, results=results %}
 {% endblock %}
