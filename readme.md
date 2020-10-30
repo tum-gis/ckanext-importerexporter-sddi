@@ -61,16 +61,20 @@ Content Packages müssen in der Form `CKAN_CONTENTPACKAGE_[Name].zip` gespeicher
 Datensätze innerhalb eines Content-Packages müssen in der Form `CKAN_DATASET_[Name].zip` gespeichert sein.
 Folgende Grafik zeigt Beispielhaft den Aufbau eines Content-Packages:
 
+```
 CKAN_CONTENTPACKAGE_Basispaket.zip  
 ├───CKAN_DATASET_Datensatz-1.zip  
-│   ├───CKAN_DATASET_Datensatz-1  
+│   └───CKAN_DATASET_Datensatz-1  
 │       ├───dataset.json
-│       ├───
-├───barconfig  
-├───Baz  
-│   ├───BadBaz  
-│   └───Drop  
-
+│       ├───bild-1.jpg
+│       └───bild-2.png
+└───CKAN_DATASET_Datensatz-2.zip  
+    └───CKAN_DATASET_Datensatz-2  
+        ├───dataset.json
+        ├───grafik-1.jpg
+		├───grafik-2.gif
+        └───tabelle.svc 
+```
 
 ## Export von Content-Packages
 Content-packages können direkt im CKAN-Katalog erzeugt werden. Der Export setzt vorraus dass Sie als Administrator im CKAN-Katalog eingeloggt sind. Navigieren Sie hierfür zum Datensatz-Tab und führen Sie eine beliebige Suche durch. Sie können auch eigene Such-Erweiterungen wie eine Räumliche Suche verwenden. Oben rechts taucht nun ein Button `Auswahl als Content-Package exportieren` auf.
@@ -107,6 +111,10 @@ Analog zum Export kann auch der Import mit einem Einzelnen Datensatz erfolgen. H
 
 * Was passiert wenn ein Datensatz importiert wird, der bereits im Katalog vorhanden ist?  
 Ist ein Datensatz bereits registriert wird er übersprungen und eine Warnung mit einem Link zum Datensatz ausgegeben.
+* Werden Ressourcen wie z.B. Bilder mit exportiert und Importiert?  
+Ja, Sämtliche Ressourcen werden exportiert und auch wieder importiert.
+* Gehen beim Export und Import Daten verloren?  
+Beim Export werden alle Meta-Daten eines Datensatzes exportiert. Beim Import gehen lediglich Informationen verloren, die sich auf den ursprünglichen Datensatz beziehen, also z.B. das Erstellungs-Datum oder der urpsrüngliche Autor
 
 ## CKAN Dokumentation und Hilfe
 
