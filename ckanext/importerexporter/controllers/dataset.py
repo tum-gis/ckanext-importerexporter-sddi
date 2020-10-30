@@ -27,4 +27,3 @@ class DatasetController(toolkit.BaseController):
         r.content_disposition = 'attachment; filename=CKAN_DATASET_'+datapackage_dict[0]+'.zip'.format(package_id)
 
         return datapackage_dict[1]
-        #return json.dumps(datapackage_dict, indent=2)

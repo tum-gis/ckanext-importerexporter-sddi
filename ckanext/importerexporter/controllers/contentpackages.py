@@ -4,7 +4,6 @@ import ckan.model as model
 import ckan.plugins.toolkit as toolkit
 import ckan.lib.base as base
 import ckan.logic as logic
-#import ckan.plugins.IPackageController as pc
 
 
 class ContentPackagesController(toolkit.BaseController):
@@ -18,10 +17,6 @@ class ContentPackagesController(toolkit.BaseController):
         except logic.NotAuthorized:
             base.abort(403, _('Need to be system administrator to administer'))
         c.revision_change_state_allowed = True
-
-
-
-
 
         return base.render('admin/contentpackages.html')
 

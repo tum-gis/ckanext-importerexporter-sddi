@@ -6,9 +6,6 @@ import ckanext.importerexporter.controllers.contentpackage as cp
 import ckan.lib.base as base
 import ckan.lib.helpers as h
 
-import logging
-log = logging.getLogger(__name__)
-
 
 class ImporterexporterPlugin(plugins.SingletonPlugin):
     '''Plugin that adds importing/exporting datasets as Data Packages.
@@ -17,8 +14,6 @@ class ImporterexporterPlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.IRoutes, inherit=True)
     plugins.implements(plugins.IPackageController, inherit=True)
-    #plugins.search_result = []
-    #s_result = []
 
     def update_config(self, config):
         toolkit.add_template_directory(config, 'templates')
@@ -57,14 +52,8 @@ class ImporterexporterPlugin(plugins.SingletonPlugin):
 
 
     def after_search(self, search_result, search_params):
-        #plugins.search_result = search_result
         self.search_result = search_result
-        #toolkit.impexp_search_result = search_result
-        #x = 1 + e + search_result
-        log.info("################## search params ######################")
-        log.info(str(search_params))
         self.s_result = search_params
-        log.info("### ### " + str(toolkit.c.user))
         base.render('set_url_str.html')
         return search_result
 
@@ -78,9 +67,6 @@ class ImporterexporterPlugin(plugins.SingletonPlugin):
                 ckanext.importerexporter.logic.action.get.search_list_show_as_contentpackage,
             'package_create_from_contentpackage':
                 ckanext.importerexporter.logic.action.create.package_create_from_contentpackage,
-            #'get_search_results':
-            #     plugins.search_result,
-
         }
 
 
