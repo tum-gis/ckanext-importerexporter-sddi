@@ -1,0 +1,93 @@
+{% ckan_extends %}
+{#% extends "package/search.html" %#}
+
+
+
+{% block primary_content %}
+
+  <section class="module">
+    <div class="module-content">
+{% block page_primary_action %}
+
+{#{ super() }#}
+<div >
+        {% if h.check_access('package_create') %}
+          <div class="page_primary_action" style="display:inline-block">
+            {{ h.snippet ('snippets/add_dataset.html', dataset_type=dataset_type) }}
+          </div>
+        {% endif %}
+{% if c.userobj.sysadmin %}
+  {% if c.page.items %}
+{% set dataset_list = [] %}
+<div style="display:none">
+{% for package in c.page.items %}
+{{ dataset_list.append(package.name) }}
+{% endfor %}
+</div>
+<div style="display:inline-block;float:right">
+<a href="{% url_for 'export_contentpackage', dataset_list=dataset_list %}" class="btn btn-primary" id="export_contentpackage_button">Auswahl als Content Package exportieren</a>
+</div>
+{% endif %}
+{% endif %}
+</div>
+
+      {% endblock %}
+
+
+
+{% block form %}
+{{ super() }}
+      {% endblock %}
+      {% block package_search_results_list %}
+{{ super() }}
+      {% endblock %}
+
+   </div>
+    {% block page_pagination %}
+{{ super() }}
+    {% endblock %}
+ </section>
+
+
+  {% block package_search_results_api %}
+{{ super() }}
+{% endblock %}
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

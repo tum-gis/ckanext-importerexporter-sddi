@@ -1,0 +1,56 @@
+{% import 'macros/form.html' as form %}
+{% block basic_fields_url %}
+  {% set is_upload = (data.url_type == 'upload') %}
+{% set errors = {} %}
+  {{ form.image_upload(data, errors, field_url='url', field_upload='upload', field_clear='clear_upload', is_upload_enabled=h.uploads_enabled(), is_url=data.url and not is_upload, is_upload=is_upload, upload_label=_('File'), url_label=_('URL')) }}
+{% endblock %}
+
+  {#% set url_label = url_label or _('Image URL')  %}
+  {% set upload_label = upload_label or _('Image')  %}
+  {% set previous_upload = data['previous_upload'] %}
+{% set field_upload = 'upload' %}
+{% set field_clear='clear_upload' %}
+{% set is_url=data.url %}
+{% set upload_label=_('File') %}
+
+
+
+  {% if h.uploads_enabled() %}
+  <div class="image-upload"
+       data-module="image-upload"
+       data-module-is_url="{{ 'true' if is_url else 'false' }}"
+       data-module-is_upload="{{ 'true' if is_upload else 'false' }}"
+       data-module-field_url="{{ field_url }}"
+       data-module-field_upload="{{ field_upload }}"
+       data-module-field_clear="{{ field_clear }}"
+       data-module-upload_label="{{ upload_label }}"
+       data-module-field_name="{{ field_name }}"
+       data-module-previous_upload="{{ 'true' if previous_upload else 'false' }}">
+
+{{ form.input(field_upload, label=upload_label, id='field-image-upload', type='file', placeholder='', value='', error='', classes=['control-full']) }}
+    {% if is_upload %}
+    {{ checkbox(field_clear, label=_('Clear Upload'), id='field-clear-upload', value='true', error='', classes=['control-full']) }}
+    {% endif %}
+    {% endif %}
+{% endblock %#}
+
+
+{#
+{% extends 'package/snippets/package_basic_fields.html' %}
+
+{% block package_basic_fields_title %}
+{% endblock %}
+
+{% block package_basic_fields_url %}
+{% endblock %}
+
+{% block package_basic_fields_description %}
+{% endblock %}
+
+{% block package_basic_fields_tags %}
+{% endblock %}
+
+{% block package_basic_fields_license %}
+{% endblock %}
+
+#}

@@ -1,0 +1,24 @@
+{% extends "admin/base.html" %}
+{#% extends 'package/base_form_page.html' %#}
+
+{% block primary_content_inner %}
+
+{% block form %}
+  {% snippet 'admin/snippets/import_datapackage_form.html', data=data, success=success, results=results %}
+{% endblock %}
+
+{% endblock %}
+
+{% block secondary_content %}
+  <div class="module module-narrow module-shallow">
+    <h2 class="module-heading">
+      <i class="fa fa-info-circle"></i>
+      {{ 'Content-Packages einbinden' }}
+    </h2>
+    <div class="module-content">
+      {% block admin_form_help %}
+         <p>Ein Content-Package ist eine Sammlung an Datensätzen, welche sorgfältig und nach verschiedenen Kriterien ausgewählt worden sind. Über ein solches Content-Package kann eine leere Katalog-Instanz mit einer Grundaussatttung an relevanten Datensätzen versorgt werden. Die Content-Packages können zukünftig über die Website <a href="https://lrg.tum.de/gis/startseite">[Link noch nicht verfügbar]</a> bezogen werden.</p>
+      {% endblock %}
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% ckan_extends %}
+
+{% block content_primary_nav %}
+{{ super() }}
+
+{{ h.build_nav_icon('admin.contentpackages', 'Content-Packages', icon='clipboard') }}
+{#{{ h.build_extra_admin_nav() }}#}
+
+{% endblock %}

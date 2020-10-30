@@ -16,7 +16,7 @@ class DatasetController(toolkit.BaseController):
             'user': toolkit.c.user,
         }
         r = toolkit.response
-        r.content_disposition = 'attachment; filename=dataset.zip'.format(package_id)
+        
         r.content_type = 'application/zip'
 
         try:
@@ -24,5 +24,7 @@ class DatasetController(toolkit.BaseController):
         except toolkit.ObjectNotFound:
             toolkit.abort(404, 'Dataset not found')
 
-        return datapackage_dict
+        r.content_disposition = 'attachment; filename=CKAN_DATASET_'+datapackage_dict[0]+'.zip'.format(package_id)
+
+        return datapackage_dict[1]
         #return json.dumps(datapackage_dict, indent=2)

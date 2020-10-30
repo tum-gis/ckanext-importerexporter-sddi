@@ -1,0 +1,66 @@
+{% import 'macros/form.html' as form %}
+{% set action = h.url_for('contentpackages') %}
+
+<form class="dataset-form form-horizontal" method="post" action="{{ action }}" data-module="basic-form" enctype="multipart/form-data">
+    {#% block errors %}{{ form.errors(error_summary) }}{% endblock %#}
+
+
+{% if success == 0 %}
+    {% block info %}
+<div class="error-explanation alert alert-success{{ " " ~ classes | join(' ') }}">
+Content-Package erfolgreich importiert!<br>
+{{ results }}
+  </div>
+{% endblock %}
+{% endif %}
+
+
+
+{% if success == 1 %}
+    {% block warnings %}
+<div class="error-explanation alert alert-warning{{ " " ~ classes | join(' ') }}">
+    Warnung!
+{% for error in results %}
+{% if error|length == 1 %}
+<li>{{ error[1] }} </li>
+{% else %}
+<li>{{ error[1] }} <a href="/dataset/{{ error[1] }}" target="_blank">{{ error[2] }}</a></li>
+{% endif %}
+    
+{% endfor %}
+  </div>
+{% endblock %}
+{% endif %}
+
+
+
+{% if success == 2 %}
+    {% block errors %}
+<div class="error-explanation alert alert-error{{ " " ~ classes | join(' ') }}">
+
+    Fehler beim Import des Content-packages!
+
+{% for error in results %}
+{% if error|length == 1 %}
+<li>{{ error[1] }} </li>
+{% else %}
+<li>{{ error[1] }} <a href="/dataset/{{ error[2] }}" target="_blank">{{ error[2] }}</a></li>
+{% endif %}
+    
+{% endfor %}
+  </div>
+{% endblock %}
+{% endif %}
+
+
+
+    {% block basic_fields %}
+        {% snippet 'admin/snippets/import_datapackage_basic_fields.html', data=data, errors=errors %}
+    {% endblock %}
+
+  <div class="form-actions">
+    {% block add_button %}
+    <button class="btn btn-primary" type="submit">{{ _('Import') }}</button>
+    {% endblock %}
+  </div>
+</form>
