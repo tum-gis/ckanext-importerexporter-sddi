@@ -54,7 +54,7 @@ class ImporterexporterPlugin(plugins.SingletonPlugin):
     def after_search(self, search_result, search_params):
         self.search_result = search_result
         self.s_result = search_params
-        base.render('set_url_str.html')
+        #base.render('set_url_str.html')
         return search_result
 
 
