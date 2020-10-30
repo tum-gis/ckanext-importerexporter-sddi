@@ -74,13 +74,23 @@ Diese CKAN-Erweiterung ermöglicht auch den Export eines einzelnen Datensatzes. 
 
 ## Import eines Content-packages
 Für den Import von Content-Packages gibt es einen eigenen Tab im Administrations-Bereich des CKAN-Katalogs. Sollte dieser Tab nicht wie im folgenden Bild aussehen, könnte der Grund dafür sein, dass der katalog nicht mittels SSL-Verschlüsselt ist.
-![Export](images/imp_cont.PNG?raw=true "Import")
-Sie haben hier die Möglichkeit 
+![Import](images/imp_cont.PNG?raw=true "Import")
+Sie haben hier die Möglichkeit ein Content-Package entweder über einen Datei-Upload oder über einen Link zu importieren. Falls Sie die Link-Option verwenden, muss die URL direkt zur Datei weisen. Über den Button `Import` wird das Content-Package importiert. Ist einer der Datensätze im Content-Package bereits im Katalog registriert, wird dieser Datensatz übersprungen und eine Warnung ausgegeben.
 
+### Import Erfolgreich
+Ist der Import erfolgreich, sind die Datensätze des Content-Packages nun im Katalog registriert.
+![Import](images/imp_cont_success.PNG?raw=true "Import")
+
+### Import mit Warnungen
+Wenn während dem Import Warnungen auftreten, werden diese in gelb ausgegeben. Eine häufige Warnung ist, dass einer der Datensätze bereits im Katalog registriert sind. Sie können nun diesen Datensatz direkt anklicken und bei Bedarf löschen. Anschließend können Sie das Content-Package erneut importieren. Tritt eine Warnung auf, werden alle anderen Datensätze im Content-Package trotzdem importiert.
+![Import](images/imp_cont_warning.PNG?raw=true "Import")
+
+### Import fehlgeschlagen
+Wenn während dem Import ein Fehler auftritt, wird der Fehlercode in rot ausgegeben. Sämtliche Datensätze im Content-Package die fehlerfrei sind, werden dennoch importiert.
+![Import](images/imp_cont_error.PNG?raw=true "Import")
 
 ## Import eines einzelnen Datensatzes
-
-
+Analog zum Export kann auch der Import mit einem Einzelnen Datensatz erfolgen. Hierfür können Sie direkt eine Datei im Format `CKAN_DATASET_[Name].zip` importieren.
 
 
 
