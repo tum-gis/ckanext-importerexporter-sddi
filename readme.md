@@ -75,6 +75,7 @@ CKAN_CONTENTPACKAGE_Basispaket.zip
         ├───grafik-2.gif
         └───tabelle.svc 
 ```
+Dieser Aufbau ist eine vereinfachte Darstellung, da jede einzelne Ressource in verschiedenen Unterordnern abgelegt ist, damit mehrere Ressourcen den selben Namen haben können. Die Bezeichnungen dieser Unterordner ist eine von CKAN generierte ID.
 
 ## Export von Content-Packages
 Content-packages können direkt im CKAN-Katalog erzeugt werden. Der Export setzt vorraus dass Sie als Administrator im CKAN-Katalog eingeloggt sind. Navigieren Sie hierfür zum Datensatz-Tab und führen Sie eine beliebige Suche durch. Sie können auch eigene Such-Erweiterungen wie eine Räumliche Suche verwenden. Oben rechts taucht nun ein Button `Auswahl als Content-Package exportieren` auf.
