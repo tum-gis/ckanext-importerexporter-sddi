@@ -18,10 +18,6 @@ import requests
 
 import datapackage
 
-import logging
-log = logging.getLogger(__name__)
-
-
 def create_package(context, dataset, dataset_name):
     #try:
     if True:
@@ -63,23 +59,16 @@ def create_package(context, dataset, dataset_name):
                 content = zf.open(dataset_name + "/" + r_path).read()
                 fp = BytesIO(content)
                 resource["upload"] = cgi.FieldStorage(fp=fp, headers=headers, environ=environ)
-            #resource.pop("id", None)
             resource_id = toolkit.get_action("resource_create")(context, resource)
             resource_replacer.append([resource_url, resource_id["url"], resource_p_id, resource_id2, resource_id["package_id"], resource_id["id"]])
-            log.error("# rid_before # : " + str(resource_replacer))
-
 
         dataset_new = toolkit.get_action("package_show")(context, {"id":json_dataset["name"]})
         description = dataset_new["notes"]
-        log.error("# description : " + str(description))
         for rr in resource_replacer:
-            log.error("# rid # : " + str(rr))
             description = description.replace(rr[0], rr[1])
             description = description.replace(rr[2] + "/resource/" + rr[3], rr[4] + "/resource/" + rr[5])
         dataset_new["notes"] = description
         toolkit.get_action("package_update")(context, dataset_new)
-
-
 
         if package_id == "1234":
             return [2, "Fehler beim erstellen des Datensatzes: " + json_dataset["title"]]
